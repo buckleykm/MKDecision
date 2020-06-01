@@ -25,13 +25,14 @@ export default class Form extends Component {
     event.preventDefault();
     const { name, email, message } = this.state;
     await axios.post(
-      'https://d4k5hdtlv4.execute-api.us-east-1.amazonaws.com/prod',
-      { key1: `${name},
-        key2: '${email},
-        key3: ${message}` }
+      'https://d4k5hdtlv4.execute-api.us-east-1.amazonaws.com/prod/message',
+      { key1: `${email}`,
+        key2: `${name}`,
+        key3: `${message}`}
     );
   }
 
+  
   render() {
     return (
       <div>
