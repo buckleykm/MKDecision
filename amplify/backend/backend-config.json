@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"mkdecisionddada8a1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
