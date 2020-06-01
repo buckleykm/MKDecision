@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
+import logo from '../images/MKLogo.PNG'
+import AppBar from '@material-ui/core/AppBar'
+import ToolBar from '@material-ui/core/ToolBar'
+import Button from '@material-ui/core/Button';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
-export default class Form extends Component {
+export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      buttontext: 'Send'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +27,10 @@ export default class Form extends Component {
     });
     console.log(this.state);
   }
+  changeText = (buttontext) => {
+
+    this.setState({ buttontext }); 
+  }
   async handleSubmit(event) {
     event.preventDefault();
     const { name, email, message } = this.state;
@@ -29,40 +39,60 @@ export default class Form extends Component {
       { key1: `${email}`,
         key2: `${name}`,
         key3: `${message}`}
-    );
+    )
+    this.setState({text: 'Send'})
+    ;
   }
 
   
   render() {
+    const { buttontext } = this.state
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name:</label>
-          <input
-            type="text"
+        <ValidatorForm onSubmit={this.handleSubmit}>
+          <AppBar>
+            <ToolBar>MK Decision Messenger</ToolBar>
+          </AppBar>
+          <br />
+          <br />
+          <br />
+          <img src={logo} alt="Logo" />
+          <br />
+          <br />
+          <TextValidator
+            label = "Name"   
             name="name"
+            validators={['required']}
+            errorMessages={['this field is required']}
             onChange={this.handleChange}
             value={this.state.name}
           />
-          
-          <label>email:</label>
-          <input
-            type="text"
+          <br />
+          <br />
+          <TextValidator
+            label = "Email"
             name="email"
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}
             onChange={this.handleChange}
             value={this.state.email}
           />
-
-          <label>Message:</label>
-          <input
-            type="text"
+          <br />
+          <br />
+          <TextValidator
+            label = "Message"   
             name="message"
+            validators={['required']}
+            errorMessages={['this field is required']}
             onChange={this.handleChange}
             value={this.state.message}
-          />
-
-          <button type="submit">Send</button>
-        </form>
+          />  
+          <br />
+          <br />
+          < Button 
+          type="submit"
+          onClick={ () => { this.changeText("Thanks for sending a message!")}  }> {buttontext} </Button>
+        </ValidatorForm>
       </div>
     );
   }
