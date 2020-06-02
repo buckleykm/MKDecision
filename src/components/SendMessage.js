@@ -53,7 +53,7 @@ export default class Form extends React.Component {
           <br />
           <img src={logo} alt="Logo" />  
           <br />        
-          Welcome to the MK Decison Messenger
+          Welcome to the MK Decision Messenger
           <br />
           <TextValidator
             label = "Name"   
