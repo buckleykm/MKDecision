@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import logo from '../images/MKLogo.PNG'
+import logo from '../images/MKAnimation.gif'
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
@@ -51,9 +51,9 @@ export default class Form extends React.Component {
          <br />
           <br />
           <br />
-          <img src={logo} alt="Logo" />
-          <br />
-          Messenger
+          <img src={logo} alt="Logo" />  
+          <br />        
+          Welcome to the MK Decison Messenger
           <br />
           <TextValidator
             label = "Name"   
