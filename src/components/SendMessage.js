@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import logo from '../images/MKLogo.PNG'
-import AppBar from '@material-ui/core/AppBar'
-import ToolBar from '@material-ui/core/ToolBar'
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
@@ -50,14 +48,12 @@ export default class Form extends React.Component {
     return (
       <div>
         <ValidatorForm onSubmit={this.handleSubmit}>
-          <AppBar>
-            <ToolBar>MK Decision Messenger</ToolBar>
-          </AppBar>
-          <br />
+         <br />
           <br />
           <br />
           <img src={logo} alt="Logo" />
           <br />
+          Messenger
           <br />
           <TextValidator
             label = "Name"   
